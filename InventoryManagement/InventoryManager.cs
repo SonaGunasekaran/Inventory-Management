@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace InventoryManagement
 {
     class InventoryManager
-    {   //Rice List
-        public List<InventoryUtility.Rice>AddToInventory(List<InventoryUtility.Rice> riceList)
+    {   //Add Rice List
+        public List<InventoryUtility.Rice>AddToInventory(List<InventoryUtility.Rice> rice)
         {
             InventoryUtility.Rice utility = new InventoryUtility.Rice();
             Console.WriteLine("Enter the rice name : ");
@@ -15,10 +18,10 @@ namespace InventoryManagement
             utility.Weight = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the rice name : ");
             utility.Price = Convert.ToInt32(Console.ReadLine());
-            riceList.Add(utility);
-            return riceList;
+            rice.Add(utility);
+            return rice;
         }
-        //Wheat List
+        //Add Wheat List
         public List<InventoryUtility.Wheat> AddToInventory(List<InventoryUtility.Wheat> wheat)
         {
             InventoryUtility.Wheat utility = new InventoryUtility.Wheat();
@@ -31,7 +34,7 @@ namespace InventoryManagement
             wheat.Add(utility);
             return wheat;
         }
-        // Pulse List
+        //Add Pulse List
         public List<InventoryUtility.Pulse> AddToInventory(List<InventoryUtility.Pulse> pulse)
         {
             InventoryUtility.Pulse utility = new InventoryUtility.Pulse();
@@ -44,6 +47,55 @@ namespace InventoryManagement
             pulse.Add(utility);
             return pulse;
         }
+        //Update the Rice List
+        public List<InventoryUtility.Rice> UpdateToInventory(List<InventoryUtility.Rice> rice)
+        {
+            Console.WriteLine("Enter the rice name update:");
+            string name = Console.ReadLine();
+            rice.Remove(rice.Find(utl => utl.Name.Equals(name)));
+            return rice;
+        }
+        //Update the Wheat List
+        public List<InventoryUtility.Wheat> UpdateToInventory(List<InventoryUtility.Wheat> wheat)
+        {
+            Console.WriteLine("Enter the Wheat name update:");
+            string name = Console.ReadLine();
+            wheat.Remove(wheat.Find(utl => utl.Name.Equals(name)));
+            return wheat;
+        }
+        //Update the Pulse List
+        public List<InventoryUtility.Pulse> UpdateToInventory(List<InventoryUtility.Pulse> pulses)
+        {
+            Console.WriteLine("Enter the rice name update:");
+            string name = Console.ReadLine();
+            pulses.Remove(pulses.Find(utl => utl.Name.Equals(name)));
+            return pulses;
+        }
+        //Remove Rice From Inventory 
+        public List<InventoryUtility.Rice> RemoveFromInventory(List<InventoryUtility.Rice> rice)
+        {
+            Console.WriteLine("Enter the name of Pulse to be Removed:");
+            string name = Console.ReadLine();
+            rice.Remove(rice.Find(utl => utl.Name.Equals(name)));
+            return rice;
+        }
+        //Remove Wheat From Inventory 
+        public List<InventoryUtility.Wheat> RemoveFromInventory(List<InventoryUtility.Wheat> wheat)
+        {
+            Console.WriteLine("Enter the name of Pulse to be Removed:");
+            string name = Console.ReadLine();
+            wheat.Remove(wheat.Find(utl => utl.Name.Equals(name)));
+            return wheat;
+        }
+        //Remove Pulse From Inventory 
+        public List<InventoryUtility.Pulse> RemoveFromInventory(List<InventoryUtility.Pulse> pulse)
+        {
+            Console.WriteLine("Enter the name of Pulse to be Removed:");
+            string name = Console.ReadLine();
+            pulse.Remove(pulse.Find(utl => utl.Name.Equals(name)));
+            return pulse;
+        }
+
         // Display and calculate the rice total
         public void DisplayInventory(List<InventoryUtility.Rice> rice)
         {
@@ -72,6 +124,7 @@ namespace InventoryManagement
             Console.WriteLine("\nTotal rice price: " + " " + wheatTotal);
 
         }
+
        // Display and calculate the pulse total
         public void DisplayInventory(List<InventoryUtility.Pulse> pulse)
         {
